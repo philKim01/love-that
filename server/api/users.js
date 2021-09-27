@@ -1,6 +1,8 @@
-const router = require('express').Router()
-const { models: { User }} = require('../db')
-module.exports = router
+const router = require('express').Router();
+const {
+  models: { User }
+} = require('../db');
+const { loggedIn, isAdmin } = require('./gatekeepingMiddleware');
 
 router.get('/', async (req, res, next) => {
   try {
@@ -9,9 +11,14 @@ router.get('/', async (req, res, next) => {
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
       attributes: ['id', 'username']
-    })
-    res.json(users)
+    });
+    if (!users) {
+      next({ status: 500, message: 'Database query failed.' });
+    }
+    res.json(users);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
+
+module.exports = router;

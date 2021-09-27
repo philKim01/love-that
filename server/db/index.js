@@ -20,6 +20,9 @@ Order.hasMany(OrderItem);
 module.exports = {
   db,
   models: {
-    User
+    User,
+    Product,
+    Order,
+    OrderItem
   }
 };
