@@ -30,6 +30,15 @@ const products = [
     price: 1800,
     stock: 10,
     category: 'Earring'
+  },
+  {
+    name: 'testing product',
+    description: 'just here for testing',
+    imageUrl:
+      'https://images.theconversation.com/files/72534/original/image-20150219-28209-ovexg7.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop',
+    price: 350,
+    stock: 350,
+    category: 'test'
   }
 ];
 async function seed() {
